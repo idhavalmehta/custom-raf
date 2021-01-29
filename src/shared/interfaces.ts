@@ -1,10 +1,13 @@
-export interface IDelayedAnimationFrameCallback {
-  (time: number): void;
-}
+import { AnimationCallback, Handle } from "./types";
 
-export interface IDelayedAnimationFrame {
-  handle: number;
-  callback: IDelayedAnimationFrameCallback;
+export interface IAnimationFrame {
+  handle: Handle;
+  callback: AnimationCallback;
   delay: number;
   cancelled: boolean;
+}
+
+export interface INextTick {
+  time: number;
+  delay: number;
 }
