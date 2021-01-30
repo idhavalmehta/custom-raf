@@ -1,28 +1,46 @@
-// const TEMP_END_TIME = performance.now() + DURATION * 2.5; // @todo delete
+import CustomRAF from "./CustomRAF";
+const animationProvider = new CustomRAF(60);
 
-import { requestDelayedAnimationFrame } from "./provider";
+let handle: number;
+let lastTime: number;
 
-function noop(timestamp: number) {
-  console.log("noop", timestamp);
+let left = 0;
+const square = document.getElementById("square");
+const maxLeft =
+  document.body.getBoundingClientRect().width -
+  square.getBoundingClientRect().width;
+
+function step(currentTime?: number) {
+  console.group("step");
+  console.log("timestamp", currentTime);
+
+  const diff = currentTime - lastTime;
+  console.log("frameRate", diff);
+  lastTime = currentTime;
+
+  left = Math.min(left + diff, maxLeft);
+  console.log("left", left);
+  square.style.transform = "translateX(" + left + "px)";
+
+  if (left >= maxLeft) {
+    left = 0;
+  }
+  handle = animationProvider.requestAnimationFrame(step);
+
+  console.groupEnd();
 }
 
-// function oneTick(timestamp) {
-//   console.log("oneTick", timestamp);
-//   requestAnimationFrame(noop);
-// }
+let isPlaying = false;
+const button = document.getElementById("button");
 
-// function tick(timestamp) {
-//   console.log("tick", timestamp);
-//   if (timestamp < TEMP_END_TIME) {
-//     requestAnimationFrame(tick);
-//   } else {
-//     console.log("the end");
-//   }
-// }
-
-// requestAnimationFrame(oneTick, 0);
-// requestAnimationFrame(oneTick, 0);
-// // requestAnimationFrame(oneTick, 4);
-// requestAnimationFrame(oneTick, 0);
-const handle = requestDelayedAnimationFrame(noop, 1);
-// // console.log(queue);
+button.onclick = () => {
+  if (isPlaying) {
+    console.log("cancelling animation");
+    animationProvider.cancelAnimationFrame(handle);
+  } else {
+    console.log("starting animation");
+    lastTime = performance.now();
+    handle = animationProvider.requestAnimationFrame(step);
+  }
+  isPlaying = !isPlaying;
+};
