@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import AnimationQueue from "../../src/rAFDelay/modules/queue";
+import AnimationQueue from "../../../src/CustomRAF/modules/queue";
 
 describe("AnimationQueue", function () {
   it("should have length 0 when initialized", function () {

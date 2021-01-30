@@ -1,16 +1,7 @@
 import { expect } from "chai";
-import AnimationClock from "../../src/rAFDelay/modules/clock";
-import { INextTick } from "../../src/rAFDelay/shared/interfaces";
-
-const now = require("performance-now");
+import AnimationClock from "../../../src/CustomRAF/modules/clock";
 
 const FPS = 60;
-const TICKS = 3;
-const DELTA = 2;
-
-const closeTo = (value: number, ideal: number, delta: number): boolean => {
-  return value >= ideal - delta && value <= ideal + delta;
-};
 
 describe("AnimationClock", function () {
   let animationClock: AnimationClock;

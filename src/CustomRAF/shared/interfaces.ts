@@ -6,8 +6,3 @@ export interface IAnimationFrame {
   delay: number;
   cancelled: boolean;
 }
-
-export interface INextTick {
-  time: number;
-  delay: number;
-}
