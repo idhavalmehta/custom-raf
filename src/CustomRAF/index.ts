@@ -42,6 +42,10 @@ export default class CustomRAF {
     }
   };
 
+  getFrames(): AnimationFrames {
+    return this._frames;
+  }
+
   requestAnimationFrame(
     callback: AnimationCallback,
     delay: number = 0

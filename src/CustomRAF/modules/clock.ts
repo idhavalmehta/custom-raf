@@ -25,7 +25,7 @@ export default class AnimationClock {
   nextTick(callback: AnimationCallback): void {
     const currentTime = now();
     const nextDelay = this._lastTime
-      ? Math.max(0, this._DELAY - (currentTime - this._lastTime))
+      ? this._DELAY - (currentTime - this._lastTime)
       : this._DELAY;
     const nextTime = (this._lastTime = currentTime + nextDelay);
     setTimeout(() => callback(nextTime), nextDelay);
