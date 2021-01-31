@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import * as sinon from "sinon";
-import CustomRAF from "../../src/CustomRAF";
+import CustomRAF from "../src";
 
 const FPS = 60;
 const FRAMERATE = 1000 / 60;

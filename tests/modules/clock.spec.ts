@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import AnimationClock from "../../../src/CustomRAF/modules/clock";
+import AnimationClock from "../../src/modules/clock";
 
 const FPS = 60;
 

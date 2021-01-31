@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import AnimationHandle from "../../../src/CustomRAF/modules/handle";
+import AnimationHandle from "../../src/modules/handle";
 
 describe("AnimationHandle", function () {
   let animationHandle: AnimationHandle;

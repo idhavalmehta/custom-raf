@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { IAnimationFrame } from "../../../src/CustomRAF/shared/interfaces";
-import { Handle } from "../../../src/CustomRAF/shared/types";
-import AnimationFrames from "../../../src/CustomRAF/modules/frames";
+import { IAnimationFrame } from "../../src/shared/interfaces";
+import { Handle } from "../../src/shared/types";
+import AnimationFrames from "../../src/modules/frames";
 
 describe("AnimationFrames", function () {
   let animationFrames: AnimationFrames;
